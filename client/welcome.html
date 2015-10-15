@@ -1,0 +1,14 @@
+<template name="welcome">
+	<div class="jumbotron">
+		<h1>Postmates for Celebs<br> WSC Atlanta 2015 </h1>
+	</div>
+	
+	{{#if currentUser}}
+		{{>requests}}
+	
+	{{else}}
+	You need to login to use this app!
+	{{/if}}
+
+
+</template>

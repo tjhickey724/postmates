@@ -1,0 +1,51 @@
+<template name="requests">
+	
+{{#if currentUser}}
+	
+	{{#if guest}}
+		<form id="requestform">
+			<input type="text" id="requestinput" placeholder="What do you want?" size="100%">
+		</form>
+
+	
+		<h2>My Requests</h2>
+		<table class="table table-bordered">
+			<tbody>
+				{{#each myRequestLines}}
+				{{> requestitem}}
+				{{/each}}
+			</tbody>
+		</table>
+		
+	{{else}}	
+		<table class="table table-bordered">
+				<tbody>
+					{{#each requestLines}}
+					{{> crewrequestitem}}
+					{{/each}}
+				</tbody>
+			</table>
+	{{/if}}
+
+
+{{else}}
+You must be logged in to use this app...
+{{/if}}
+
+</template>
+
+<template name="requestitem">
+	<tr>
+		<td>{{who}} wants </td> <td>{{what}}</td><td> at {{when}}</td><td>{{crew}}</td>
+	</tr>
+</template>
+
+<template name="crewrequestitem">
+	<tr>
+		<td>{{who}} wants </td> 
+		<td>{{what}}</td>
+		<td> at {{when}}</td>
+		<td><button class="request">Accept</button></td>
+		<td><input type="text" class="time" placeholder="time needed"></td>
+	</tr>
+</template>
