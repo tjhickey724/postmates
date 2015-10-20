@@ -16,6 +16,7 @@ Template.requests.events({
 				what:x,
 				when: new Date(),
 				crew:'none',
+				crewId:'none',
 				timeNeeded:'none'
 			};
 			
@@ -26,8 +27,11 @@ Template.requests.events({
 	
 	"click button.request": function(event){
 		this.crew = Meteor.userId();
+		console.log(event.target);
 		console.log("clicked on the button");
 		console.dir(this);
+		Meteor.call("grabit",this._id);
+		Router.go("crewJobs");
 		
 	}
 });
@@ -37,7 +41,7 @@ Template.requests.helpers({
 		return RequestLines.find({uid:Meteor.userId()},{limit:10, sort:{when:-1}});
 	},
 	requestLines: function(){
-		return RequestLines.find({crew:'none'},{limit:10, sort:{when:-1}});
+		return RequestLines.find({},{limit:10, sort:{when:-1}});
 	},
 	numrequests: function(){
 		return RequestLines.find().count();

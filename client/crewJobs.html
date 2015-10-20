@@ -1,0 +1,12 @@
+<template name="crewJobs">
+	Crew JOBS!
+	<hr>
+	{{#each job}}
+	<form id="crewJob">
+	How much time do you need to 
+	get {{what}} for {{who}}? <br> 
+	<input type="text" name="time" class="time" placeholder="{{timeNeeded}}"> minutes 
+	<input type="submit"> 
+	</form>
+	{{/each}}
+</template>
